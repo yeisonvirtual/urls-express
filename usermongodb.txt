@@ -1,4 +1,0 @@
-yeisonjr98
-BhnBHcAPjGvSRceQ
-
-mongodb+srv://yeisonjr98:<password>@cluster0.sgghgyf.mongodb.net/?retryWrites=true&w=majority
