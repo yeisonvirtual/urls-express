@@ -1,0 +1,22 @@
+// iniciar proyecto
+npm init -y
+
+// dependencias
+npm i -D nodemon
+npm i express
+
+// motor de plantillas
+npm i express-handlebars
+
+// mogoose
+npm install mongoose --save
+
+// gestionar variables de entorno
+npm i dotenv
+
+"scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+}
+
+npm run dev
