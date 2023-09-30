@@ -7,7 +7,7 @@ require("dotenv").config();
 //const atlasBDD = process.env.URI
 
 const clientDB = mongoose
-  .connect(process.env.URI)
+  .connect(`mongodb://127.0.0.1:27017/${process.env.DBNAME}`)
   .then((m)=> {
     console.log("db conectada");
     return m.connection.getClient();
