@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const { validationResult } = require("express-validator");
 const nanoid = import("nanoid");
+// modulo para enviar email
 const nodemailer = require("nodemailer");
 
 // para poder acceder a las varibles de entorno
@@ -25,10 +26,12 @@ const registerUser = async (req, res) => {
     let user = await User.findOne({ email });
 
     if (user) throw new Error("Ya existe el usuario");
+    if (password !== repassword) throw new Error("Contraseñas no coinciden");
 
     const tokenConfirm = (await nanoid).nanoid(7);
 
     user = new User({ userName, email, password, tokenConfirm });
+    console.log(user)
     await user.save();
 
     // enviar correo electronico con la confirmacion de la cuenta
@@ -36,8 +39,8 @@ const registerUser = async (req, res) => {
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       auth: {
-        user: process.env.userEmail,
-        pass: process.env.passEmail
+        user: process.env.USERMAIL,
+        pass: process.env.PASSEMAIL
       }
     });
 
@@ -45,7 +48,7 @@ const registerUser = async (req, res) => {
       from: '"Fred Foo 👻" <foo@example.com>', // sender address
       to: user.email, // list of receivers
       subject: "Verifica tu cuenta de correo", // Subject line
-      html: `<a href="http://localhost:3000/auth/confirmar/${user.tokenConfirm}">Verificar usuario aqui</a>`
+      html: `<a href="${process.env.PATHHEROKU || 'http://localhost:3000'}/auth/confirmar/${user.tokenConfirm}">Verificar usuario aqui</a>`
     });
 
     req.flash("mensajes", [
