@@ -31,7 +31,6 @@ const registerUser = async (req, res) => {
     const tokenConfirm = (await nanoid).nanoid(7);
 
     user = new User({ userName, email, password, tokenConfirm });
-    console.log(user)
     await user.save();
 
     // enviar correo electronico con la confirmacion de la cuenta
