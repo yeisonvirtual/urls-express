@@ -47,7 +47,7 @@ const registerUser = async (req, res) => {
       from: '"Fred Foo 👻" <foo@example.com>', // sender address
       to: user.email, // list of receivers
       subject: "Verifica tu cuenta de correo", // Subject line
-      html: `<a href="${process.env.PATHHEROKU || 'http://localhost:3000'}/auth/confirmar/${user.tokenConfirm}">Verificar usuario aqui</a>`
+      html: `<a href="${process.env.PATHURL || 'http://localhost:3000/'}auth/confirmar/${user.tokenConfirm}">Verificar usuario aqui</a>`
     });
 
     req.flash("mensajes", [

@@ -29,14 +29,13 @@ const app = express();
 
 const corsOptions = {
   credentials: true,
-  origin: process.env.PATHHEROKU || "*",
+  origin: process.env.PATHURL || "*",
   methods: ['GET', 'POST']
 };
 
 app.use(cors(corsOptions));
 
-//console.log(process.env.SESSIONSECRET);
-
+app.set("trust proxy", 1);
 app.use(
   session({
     secret: process.env.SECRETSESSION,
