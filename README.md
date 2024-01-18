@@ -1,5 +1,5 @@
 # Aplicación ShortURL.
-Aplicación ShortURL creada con Node.js, Express y MongoDB.
+Aplicación ShortURL creada con Node.js, Express, MongoDB y el motor de plantillas HBS
 
 - Login
   
@@ -39,7 +39,7 @@ Aplicación ShortURL creada con Node.js, Express y MongoDB.
 ![perfil](https://github.com/yeisonvirtual/urls-express/blob/main/desing/perfil.png)
 
 
-- Diseño mobil
+- Diseño responsivo
   
 ![mobilelogin](https://github.com/yeisonvirtual/urls-express/blob/main/desing/mobilelogin.png)
 
